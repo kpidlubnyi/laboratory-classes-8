@@ -54,6 +54,9 @@ class Product {
 
     try {
       await db.collection(COLLECTION_NAME).deleteOne({ name });
+      
+      const Cart = require('./Cart');
+      await Cart.deleteProductByName(name);
     } catch (error) {
       console.error("Error occurred while deleting product");
     }
